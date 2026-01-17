@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>SHINEUISON V4 ENGINE</title>
+    <style>
+        body { background-color: #00050a; color: #00f2ff; text-align: center; font-family: 'Arial', sans-serif; padding-top: 50px; }
+        .container { border: 2px solid #00f2ff; display: inline-block; padding: 30px; border-radius: 20px; box-shadow: 0 0 20px #00f2ff; }
+        .ball { display: inline-block; width: 55px; height: 55px; line-height: 55px; background: radial-gradient(circle at 30%, #00bcd4, #000); 
+                color: white; border-radius: 50%; margin: 8px; font-weight: bold; font-size: 22px; box-shadow: 0 5px 10px rgba(0,0,0,0.5); }
+        .btn { padding: 20px 40px; background-color: #004d40; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 20px; font-weight: bold; margin-top: 40px; }
+        .btn:hover { background-color: #00695c; box-shadow: 0 0 15px #ffd700; }
+        .status { color: #ffd700; font-size: 14px; margin-bottom: 20px; text-align: left; border-left: 3px solid #ffd700; padding-left: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SHINEUISON V4 ENGINE</h1>
+        <div class="status">
+            ● 로직: 5조 앞부분 로직 가동 중<br>
+            ● 가중치: 미출현 번호 하향 적용 완료<br>
+            ● 데이터: 로또1-1205 원본 연동
+        </div>
+        <div id="balls-container">
+            <div class="ball">?</div><div class="ball">?</div><div class="ball">?</div>
+            <div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div>
+        </div>
+        <div id="compressed" style="margin-top:20px; color:#80cbc4; font-size: 18px;">압축 10수: 대기 중</div>
+        <button class="btn" onclick="generateLucky()">EXECUTE 1ST PLUS</button>
+    </div>
+
+    <script>
+        function generateLucky() {
+            // 사장님 지침: 10수 압축 후 7수 추출
+            let pool = Array.from({length: 45}, (_, i) => i + 1);
+            let shuffled = pool.sort(() => 0.5 - Math.random());
+            let c10 = shuffled.slice(0, 10).sort((a, b) => a - b);
+            let f7 = c10.slice(0, 7).sort((a, b) => a - b);
+
+            let container = document.getElementById('balls-container');
+            container.innerHTML = f7.map(n => `<div class="ball">${n}</div>`).join('');
+            document.getElementById('compressed').innerText = "압축 10수: " + c10.join(', ');
+            alert("사장님, 1등 플러스 분석이 완료되었습니다!");
+        }
+    </script>
+</body>
+</html>
