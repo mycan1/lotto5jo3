@@ -3,52 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>신의 손 - 전체 데이터 통합 시스템</title>
+    <title>신의 손 - 전체 데이터 통합</title>
     <style>
         body { background-color: #0c0c0c; color: #f2c94c; font-family: 'Malgun Gothic', sans-serif; text-align: center; padding: 10px; margin: 0; }
-        h1 { color: #f2c94c; font-size: 2.2rem; margin-top: 20px; cursor: pointer; font-weight: bold; text-shadow: 2px 2px 4px #000; } 
-        .target-box { color: #FFF; font-size: 1.1rem; margin-bottom: 20px; background: #1a1a1a; padding: 10px; border-radius: 10px; display: inline-block; border: 2px solid #f2c94c; }
-        
-        #adminSection { display: none; background: #222; padding: 15px; border-radius: 10px; max-width: 400px; margin: 0 auto 15px; border: 2px solid #f2c94c; box-shadow: 0 0 15px rgba(242, 201, 76, 0.3); }
-        #numberInput { width: 90%; padding: 12px; border-radius: 5px; border: 1px solid #f2c94c; background: #000; color: #fff; font-size: 16px; text-align: center; margin-bottom: 10px; }
-        
-        .btn-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 420px; margin: 0 auto; }
-        button { border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.2s; position: relative; }
-        .btn-main { width: 100%; height: 60px; background-color: #d4a017; color: black; margin-bottom: 5px; border-bottom: 4px solid #967111; }
-        .btn-sub { width: 48%; height: 50px; background-color: #262626; color: white; border: 1px solid #333; }
-        
-        #console-container { width: 100%; max-width: 420px; margin: 15px auto; background-color: #1a1a1a; border-radius: 12px; border: 2px solid #333; overflow: hidden; box-shadow: inset 0 0 10px #000; }
-        #console { width: 100%; height: 320px; padding: 15px; text-align: left; overflow-y: auto; color: #f2c94c; box-sizing: border-box; font-size: 18px; line-height: 1.8; white-space: pre-wrap; font-weight: bold; }
-        
-        .timer-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; border-radius: 8px; color: #ff4d4d; font-size: 20px; }
+        h1 { color: #f2c94c; font-size: 2.2rem; margin-top: 20px; cursor: pointer; font-weight: bold; }
+        .target-box { width: 90%; max-width: 400px; color: #FFF; font-size: 1.1rem; margin: 0 auto 20px; background: #1a1a1a; padding: 15px 0; border-radius: 15px; border: 2px solid #f2c94c; display: block; }
+        .input-section { background: #1e1e1e; padding: 20px 15px; border-radius: 15px; max-width: 400px; margin: 0 auto 20px; border: 1px solid #333; }
+        .input-title { color: #f2c94c; font-weight: bold; margin-bottom: 15px; font-size: 1rem; }
+        #numberInput { width: 90%; padding: 15px; border-radius: 10px; border: 2px solid #f2c94c; background: #000; color: #fff; font-size: 18px; text-align: center; margin-bottom: 15px; }
+        .btn-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 420px; margin: 0 auto; }
+        button { border: none; border-radius: 12px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.2s; position: relative; }
+        .btn-apply { width: 95%; height: 55px; background-color: #f2c94c; color: black; margin-bottom: 5px; }
+        .btn-main { width: 95%; height: 65px; background-color: #d4a017; color: black; margin-bottom: 5px; }
+        .btn-sub { width: 46%; height: 55px; background-color: #262626; color: white; border: 1px solid #444; }
+        #console-container { width: 95%; max-width: 400px; margin: 20px auto; background-color: #111; border-radius: 15px; border: 1px solid #333; overflow: hidden; }
+        #console { width: 100%; height: 280px; padding: 20px; text-align: left; overflow-y: auto; color: #f2c94c; box-sizing: border-box; font-size: 18px; line-height: 1.8; white-space: pre-wrap; }
+        .timer-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; border-radius: 12px; color: #ff4d4d; }
     </style>
 </head>
 <body>
     <h1 onclick="checkAdmin()">신의 손</h1>
-    <div class="target-box">🎯 제 1206회차 (전체 데이터 로드 완료)</div>
+    <div class="target-box">🎯 제 1206회차 (전체 데이터 연동)</div>
 
-    <div id="adminSection">
-        <div style="color:#f2c94c; font-weight:bold; margin-bottom:10px;">🛠️ 관리자 전용 18수 설정</div>
-        <input type="text" id="numberInput" placeholder="분석된 18수 입력 (쉼표 구분)">
-        <button style="width:100%; height:45px; background:#f2c94c; color:black; font-weight:bold;" onclick="applyAdminNumbers()">✅ 시스템 전체 적용</button>
+    <div id="adminArea" class="input-section">
+        <div class="input-title">📍 분석할 18수를 쉼표로 입력하세요</div>
+        <input type="text" id="numberInput" placeholder="예: 1, 5, 12, 18, 24, 30...">
+        <button class="btn-apply" onclick="applyNumbers()">✅ 18수 적용하기</button>
     </div>
     
     <div class="btn-container">
         <button class="btn-main" id="btn5" onclick="process('5')">5조합 생성 (AC 9-10)<div id="timer5" class="timer-overlay"></div></button>
-        <button class="btn-main" id="btn10" onclick="process('10')">10조합 생성 (전체 데이터 연동)<div id="timer10" class="timer-overlay"></div></button>
-        <button class="btn-sub" onclick="location.reload()">새로고침</button>
-        <button class="btn-sub" onclick="alert('전체 회차 데이터 연동 중...')">데이터 상태</button>
+        <button class="btn-main" id="btn10" onclick="process('10')">10조합 생성 (패턴 분석)<div id="timer10" class="timer-overlay"></div></button>
+        <button class="btn-sub" onclick="alert('전체 84개 데이터 로드 완료!')">데이터 상태</button>
+        <button class="btn-sub" onclick="location.reload()">전체 삭제</button>
     </div>
 
-    <div id="console-container"><div id="console">▶ 사장님, 시스템 가동 준비되었습니다. '신의 손' 제목을 눌러 18수를 설정해 주세요.</div></div>
+    <div id="console-container">
+        <div id="console">▶ 사장님, 18수를 입력하고 [적용]을 눌러주세요. 전체 데이터가 연동되어 있습니다.</div>
+    </div>
 
     <script>
-        // 1. 사장님 지시: 18수 기본 저장소
+        // [Line 62] 사장님 18수 저장소
         var userPool = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]; 
-
         var WAIT_TIME = 60000;
 
-        // 2. 사장님 지시: 전체 데이터 포함 (과거 회차 이력)
+        // [Line 65] 사장님이 지시하신 84개 전체 데이터 통합 (1122회~1205회)
         var data = [
             [1205,1,4,16,23,31,41],[1204,8,16,28,30,31,44],[1203,3,6,18,29,35,39],[1202,5,12,21,33,37,40],[1201,7,9,24,27,35,36],[1200,1,2,4,16,20,32],
             [1199,16,24,25,30,31,32],[1198,26,30,33,38,39,41],[1197,1,5,7,26,28,43],[1196,8,12,15,29,40,45],[1195,3,15,27,33,34,36],[1194,3,13,15,24,33,37],
@@ -68,27 +67,21 @@
 
         function checkAdmin() {
             var pw = prompt("관리자 비밀번호를 입력하세요.");
-            if (pw === "8459") {
-                document.getElementById('adminSection').style.display = 'block';
-                alert("사장님 전용 관리자 모드 활성화");
-            } else {
-                alert("비밀번호가 일치하지 않습니다.");
-            }
+            if (pw === "8459") alert("관리자 권한 확인됨");
+            else alert("비밀번호 불일치");
         }
 
-        function applyAdminNumbers() {
+        function applyNumbers() {
             var val = document.getElementById('numberInput').value;
             var nums = val.split(/[,.\s]+/).map(n => parseInt(n.trim())).filter(n => n >= 1 && n <= 45);
-            var unique = [...new Set(nums)];
-            
-            if (unique.length !== 18) {
-                alert("사장님, 정확히 18개를 입력하셔야 합니다. (현재: " + unique.length + "개)");
+            if (nums.length !== 18) {
+                alert("정확히 18개를 입력해주세요. (현재: " + nums.length + "개)");
                 return;
             }
-            
-            userPool = unique.sort((a,b) => a-b);
-            document.getElementById('console').innerHTML = "✅ 18수 연동 성공!\n[" + userPool.join(", ") + "]\n\n이제 조합 생성 버튼을 눌러주세요.";
-            document.getElementById('adminSection').style.display = 'none';
+            userPool = nums.sort((a,b) => a-b);
+            var code = "var userPool = [" + userPool.join(",") + "];";
+            document.getElementById('console').innerHTML = "📢 아래 줄을 복사하여 깃허브 62번 줄에 넣으세요:\n\n" + code;
+            alert("18수 적용 완료! 전체 데이터와 연동되었습니다.");
         }
 
         function getAC(arr) {
@@ -101,9 +94,7 @@
 
         function process(mode) {
             var box = document.getElementById('console');
-            box.innerHTML = "▶ [" + mode + "조합 생성 엔진 가동...]\n";
-            
-            // 사장님 지침: 최신 당첨번호와 이월수 비교 (최상단 데이터 사용)
+            box.innerHTML = "▶ [" + mode + "조합 생성 시작...]\n";
             var lastWin = data[0].slice(1);
             var gen = 0, safety = 0;
             
@@ -115,11 +106,11 @@
                 }
                 res.sort((a,b) => a-b);
                 
-                // 사장님 지침: 이월수 0~2개 제한 로직
+                // 이월수 0~2개 제한 (data[0] 기준)
                 var co = res.filter(n => lastWin.includes(n)).length;
                 if (co > 2) continue; 
                 
-                // 사장님 지침: 5조합 전용 AC 필터 (9~10)
+                // 5조합 전용 AC 9-10 필터
                 if (mode === '5' && (getAC(res) < 9 || getAC(res) > 10)) continue; 
                 
                 gen++;
