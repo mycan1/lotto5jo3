@@ -29,20 +29,20 @@
     <div class="target-box">🎯 제 1207회차 V60-Master</div>
 
     <div class="btn-container">
-        <button class="btn-main" id="btn5" onclick="process('5')">5조합 생성 (압축 12수)<div id="timer5" class="timer-overlay"></div></button>
-        <button class="btn-main" id="btn10" onclick="process('10')">10조합 생성 (패턴 18수)<div id="timer10" class="timer-overlay"></div></button>
+        <button class="btn-main" id="btn5" onclick="process('5')">5조합 생성 <div id="timer5" class="timer-overlay"></div></button>
+        <button class="btn-main" id="btn10" onclick="process('10')">10조합 생성 <div id="timer10" class="timer-overlay"></div></button>
         <button class="btn-sub" onclick="showStorage()">마킹 보관함</button>
-        <button class="btn-sub" onclick="openMsg()">쪽지함</button>
+        <button class="btn-sub" onclick="openMsg()">공 지</button>
         <button class="btn-sub" onclick="clearAll()">전체 삭제</button>
         <button class="btn-sub" onclick="location.reload()">새로고침</button>
         <button class="btn-kakao" onclick="window.open('https://open.kakao.com/o/사장님주소')">💬 카톡 오픈채팅 연결</button>
     </div>
 
-    <div id="console-container"><div id="console">▶ V60-Master 엔진 가동 준비 완료...<br>AC 9-10 정밀 필터 및 이월수 0-2 필터 활성화.</div></div>
+    <div id="console-container"><div id="console">▶ V60-Master 엔진 가동 준비 완료...<br>AC 9-10 정밀 필터. </div></div>
 
     <div id="storage-modal"><div class="modal-content"><div class="storage-title">📜 마킹 보관함</div><div id="list-container"></div><button class="close-btn" onclick="closeModal('storage-modal')">창 닫기</button></div></div>
     
-    <div id="msg-modal"><div class="modal-content"><div class="storage-title">📩 쪽지함</div><div style="color:#FFF; padding:15px 0; line-height:1.6;">[공지] V60 정밀 이식 완료.<br><br>1. AC 9~10 사이만 통과<br>2. 이월수 0~2개 필터 적용<br>3. 전체데이터 1206회 대조 완료</div><button class="close-btn" onclick="closeModal('msg-modal')">확인</button></div></div>
+    <div id="msg-modal"><div class="modal-content"><div class="storage-title">📩 공  지</div><div style="color:#FFF; padding:15px 0; line-height:1.6;">[공지] V60 정밀 이식 완료.<br><br>1. AC 9~10 사이만 통과<br>2. 이월수 0~2개 필터 적용<br>3. 전체데이터 1206회 대조 완료</div><button class="close-btn" onclick="closeModal('msg-modal')">확인</button></div></div>
 
     <script>
         // [사장님 원칙] 압축 12수 및 최종 18수 데이터
